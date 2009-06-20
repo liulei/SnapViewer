@@ -91,7 +91,7 @@ Window::Window(){
 
 	centralWidget->setLayout(mainLayout);
 
-	setWindowTitle(tr("SnapViewer"));
+	setWindowTitle(tr("cucoViewer"));
 	
 	connect(this, SIGNAL(fileOpened(char *)), 
 			glWidget, SLOT(updateSnap(char *)));
@@ -125,8 +125,8 @@ void	Window::openFile(){
 	QString	fileName;
 	fileName	=	QFileDialog::getOpenFileName(this,
 						tr("Open Snapshot"), 
-						"/home/liulei/program/N-body/Gadget-2.0.3/Gadget2/output_32", 
-						tr("Snapshot files(*)"));
+						"/home/liulei/program/N-body/cuco",
+						tr("cuco files(*)"));
 	snapName	=	fileName.toAscii().data();
 	printf("filename: %s\n", snapName);
 	emit fileOpened(snapName);

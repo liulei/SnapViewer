@@ -1,30 +1,28 @@
-typedef struct io_header_1
-{
-  int      npart[6];
-  double   mass[6];
-  double   time;
-  double   redshift;
-  int      flag_sfr;
-  int      flag_feedback;
-  int      npartTotal[6];
-  int      flag_cooling;
-  int      num_files;
-  double   BoxSize;
-  double   Omega0;
-  double   OmegaLambda;
-  double   HubbleParam; 
-  char     fill[256- 6*4- 6*8- 2*8- 2*4- 6*4- 2*4 - 4*8];  /* fills to 256 Bytes */
-} Header;
+typedef	float	FLOAT;
 
-typedef struct particle_data 
-{
-  float  Pos[3];
-  float  Vel[3];
-  float  Mass;
-  int    Type;
+typedef	struct	tag_particle_data{
+	
+	FLOAT	Pos[3];
+	FLOAT	Mass;
+	FLOAT	Vel[3];
+	FLOAT	GravAccel[3];
+	FLOAT	GravPM[3];
 
-  float  Rho, U, Temp, Ne;
-} Particle;
+	int		Ti_endstep;
+	int		Ti_begstep;
+}PARTICLE;
+
+typedef struct	tag_io_header{
+
+	int		NumPart;
+	double	Mass;
+	double	Time;
+	double	Redshift;
+	double	BoxSize;
+	double	Omega0;
+	double	OmegaLambda;
+	double	HubbleParam;
+}HEADER;
 
 class Snap{
 public:
@@ -42,17 +40,12 @@ public:
 	double	OmegaLambda;
 	double	HubbleParam;
 	
-	Particle *	P;
+	PARTICLE *	P;
 
 private:
 	int		print_info();
-	int		unit_conversion();
-	int		load_snapshot(char * fname, int files);
-	int		allocate_memory();
-	int		reordering();
+	int		load_snapshot(char * fname);
 
-	Header	header1;
-	int		Ngas;
-	int *	Id;
+	HEADER	header1;
 };
 
