@@ -15,13 +15,13 @@ typedef	struct	tag_particle_data{
 typedef struct	tag_io_header{
 
 	int		NumPart;
-	double	Mass;
-	double	Time;
-	double	Redshift;
-	double	BoxSize;
-	double	Omega0;
-	double	OmegaLambda;
-	double	HubbleParam;
+	float	Mass;
+	float	Time;
+	float	Redshift;
+	float	BoxSize;
+	float	Omega0;
+	float	OmegaLambda;
+	float	HubbleParam;
 }HEADER;
 
 class Snap{
